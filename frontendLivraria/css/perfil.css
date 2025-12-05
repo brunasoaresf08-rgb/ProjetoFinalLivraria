@@ -1,0 +1,107 @@
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(#14c3ff, #233aff);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        width: 340px;
+        background: white;
+        padding: 20px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .profile-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 25px;
+    }
+
+    .profile-info {
+        text-align: left;
+    }
+
+    .profile-info h2 {
+        margin: 0;
+        font-size: 20px;
+    }
+
+    .profile-info p {
+        margin: 0;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .icon-profile {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 26px;
+    }
+
+    .btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    font-size: 18px;
+    border-radius: 12px;
+    background: #3758ff;
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+    font-weight: bold;
+}
+
+    .menu-box {
+        background: #ededed;
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        cursor: pointer;
+        border-bottom: 1px solid #cfcfcf;
+    }
+
+    .menu-item:last-child {
+        border: none;
+    }
+
+    .menu-item span {
+        margin-left: 10px;
+        font-size: 16px;
+    }
+
+    .logout {
+        cursor: pointer;
+        margin-top: 10px;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .logo {
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 14px;
+        color: #0077ff;
+    }

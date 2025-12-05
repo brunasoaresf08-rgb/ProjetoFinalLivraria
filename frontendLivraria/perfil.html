@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/perfil.css">
+<title>Meu Perfil</title>
+<body>
+
+<div class="card">
+
+    <div class="profile-top">
+        <div class="icon-profile">👤</div>
+
+        <div class="profile-info">
+            <h2>Meu Perfil</h2>
+            <p>Felipe Amaral</p>
+            <p>felipe.amaral@gmail.com</p>
+        </div>
+
+        <button class="edit-btn">Editar</button>
+    </div>
+
+    <div class="menu-box">
+        <div class="menu-item" onclick="abrirDados()">
+            <div>ℹ️</div>
+            <span>Dados Pessoais</span>
+        </div>
+
+        <div class="menu-item" onclick="mudarConta()">
+            <div>👥</div>
+            <span>Mudar de Conta</span>
+        </div>
+
+        <div class="menu-item" onclick="abrirAjuda()">
+            <div>❓</div>
+            <span>Central de Ajuda</span>
+        </div>
+
+        <div class="menu-item" onclick="abrirConfig()">
+            <div>⚙️</div>
+            <span>Configurações</span>
+        </div>
+    </div>
+
+    <div class="logout" onclick="window.location.href='index.html'; return false;">
+        Sair → 🚪
+    </div>
+    
+
+
+    <div class="logo">BIBLIOTEC</div>
+
+</div>
+
+<script>
+    // 🔵 Aqui você define o que cada botão faz
+
+    function abrirDados() {
+        window.location.href = "dados.html"; // coloque o link da sua página
+    }
+
+    function mudarConta() {
+        window.location.href = "conta.html";
+    }
+
+    function abrirAjuda() {
+        window.location.href = "ajuda.html";
+    }
+
+    function abrirConfig() {
+        window.location.href = "config.html";
+    }
+
+    function sair() {
+        alert("Você saiu da conta.");
+        window.location.href = "login.html";
+    }
+</script>
+
+</body>
+</html>
