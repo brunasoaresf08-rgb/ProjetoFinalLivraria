@@ -1,81 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="css/perfil.css">
-<title>Meu Perfil</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil</title>
+    <link rel="stylesheet" href="css/perfil.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 <body>
+    <header>
+        <section class="container-logo">
+            <div class="container-logo-img">
+                <img class="logo" src="./IMG/logo branca 23.png" alt="logo-bibliotec">
+            </div>
+        </section>
 
-<div class="card">
+        <section class="container-form">
+            <form method="GET" action="/buscar">
+            <input type="text" name="q" placeholder="Faça sua pesquisa">
+            <button type="submit">Buscar</button>
+            </form>
+        </section>
 
-    <div class="profile-top">
-        <div class="icon-profile">👤</div>
+        <section class="icon">
+            <nav class="icon-cabecalho">
+                <a href="./"><span class="material-symbols-outlined">notifications</span></a>
+                <a href="./perfil.html"><span class="material-symbols-outlined">account_circle</span></a>
+            </nav>
+            
+        </section>
+    </header>
 
-        <div class="profile-info">
-            <h2>Meu Perfil</h2>
-            <p>Felipe Amaral</p>
-            <p>felipe.amaral@gmail.com</p>
+     <main>
+        <div class="profile-card">
+        <h2 class="title">Informações do perfil</h2>
+        <div class="profile-content-body">
+            <div class="profile-icon-wrapper">
+                <div class="profile-icon">
+                   
+                </div>
+            </div>
+          
+
+            
+            <div class="form-fields">
+                <input type="text" id="nome" placeholder="Nome completo" class="full-width">
+                
+                <input type="email" id="email" placeholder="E-mail" class="full-width">
+                
+                <input type="password" id="senha" placeholder="Senha" class="full-width">
+
+                
+                
+                <div class="input-group">
+                    <input type="date" id="data_nascimento" placeholder="00/00/0000" class="input-half">
+                    <input type="text" id="celular" placeholder="+55 11 9 0000-0000" class="input-half">
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" id="curso" placeholder="Curso" class="input-half">
+                </div>
+            </div>
         </div>
-
-        <button class="edit-btn">Editar</button>
     </div>
+   
 
-    <div class="menu-box">
-        <div class="menu-item" onclick="abrirDados()">
-            <div>ℹ️</div>
-            <span>Dados Pessoais</span>
-        </div>
+ </main>
 
-        <div class="menu-item" onclick="mudarConta()">
-            <div>👥</div>
-            <span>Mudar de Conta</span>
-        </div>
-
-        <div class="menu-item" onclick="abrirAjuda()">
-            <div>❓</div>
-            <span>Central de Ajuda</span>
-        </div>
-
-        <div class="menu-item" onclick="abrirConfig()">
-            <div>⚙️</div>
-            <span>Configurações</span>
-        </div>
-    </div>
-
-    <div class="logout" onclick="window.location.href='index.html'; return false;">
-        Sair → 🚪
-    </div>
-    
-
-
-    <div class="logo">BIBLIOTEC</div>
-
-</div>
-
-<script>
-    // 🔵 Aqui você define o que cada botão faz
-
-    function abrirDados() {
-        window.location.href = "dados.html"; // coloque o link da sua página
-    }
-
-    function mudarConta() {
-        window.location.href = "conta.html";
-    }
-
-    function abrirAjuda() {
-        window.location.href = "ajuda.html";
-    }
-
-    function abrirConfig() {
-        window.location.href = "config.html";
-    }
-
-    function sair() {
-        alert("Você saiu da conta.");
-        window.location.href = "login.html";
-    }
-</script>
 
 </body>
 </html>
