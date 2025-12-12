@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <title>Biblioteca - Home</title>
+</head>
+<body>
+    <header>
+             <section class="banner">
+
+        <nav class="menu">
+      <a href="./perfil.html"><span class="material-icons-outlined">person</span></a>
+      <a href="#"><span class="material-icons-outlined">favorite_border</span></a>
+      <a href="./index.html"><span class="material-icons-outlined">logout</span></a>
+     </nav>
+        <h1>O mundo dos livros na palma da sua mão.</h1>
+
+
+
+        <section class="container-form">
+      <form method="GET" action="/buscar">
+        <input type="text" name="q" placeholder="Faça sua pesquisa">
+        <button type="submit">Buscar</button>
+      </form>
+    </section>
+
+        </section>
+    </header>
+
+    <main>
+
+         <section class="main-content">
+      <div class="titulo-pedidos">
+        <h2>Meus pedidos</h2>
+      </div>
+
+      <div class="carousel-container">
+        <button class="carousel-btn prev">&lt;</button>
+
+        <div class="carousel-track">
+
+          <div class="card-book">
+            <img src="./img/LivroAluta.png" alt="A luta">
+            <span class="book-title">A luta</span>
+          </div>
+
+          <div class="card-book">
+            <img src="./img/LivroAssimQueAcaba.png" alt="É Assim Que Acaba">
+            <span class="book-title">É Assim Que Acaba</span>
+          </div>
+
+          <div class="card-book">
+            <img src="./img/LivroChorao.jpg" alt="Se Não Eu, Quem Vai Fazer Você Feliz?">
+            <span class="book-title">Se Não Eu, Quem Vai Fazer Você Feliz?</span>
+          </div>
+
+          <div class="card-book">
+            <img src="./img/LivroCienciadaComp.png" alt="Introdução a Ciência da Computação">
+            <span class="book-title">Introdução a Ciência da Computação</span>
+          </div>
+
+          <div class="card-book">
+            <img src="./img/LivroHarryPotter.png" alt="Lugar Feliz">
+            <span class="book-title">Harry Potter</span>
+          </div>
+
+          <div class="card-book">
+            <img src="./img/LivroIt.png" alt="O pequeno principe">
+            <span class="book-title">It A Coisa</span>
+          </div>
+
+          <div class="card-book">
+            <img src="./img/LivroMatematica.jpg" alt="Os sete maridos de Evelyn Hugo">
+            <span class="book-title">Matemática - Algebra</span>
+          </div>
+
+          <div class="card-book">
+            <img src="./img/LivroMetalurgia.png" alt="Vermelho, branco e sangue azul">
+            <span class="book-title">Engenharia de Materiais - Metalurgia</span>
+          </div>
+          <div class="card-book">
+            <img src="./img/LivroProgramação.png" alt="É assim que acaba">
+            <span class="book-title">Introdução a Programação em Python</span>
+          </div>
+        </div>
+
+        <button class="carousel-btn next">&gt;</button>
+      </div>
+    </section>
+
+    <section class="main-content">
+      <div class="titulo-pedidos">
+        <h2>Meus favoritos</h2>
+      </div>
+
+      <div class="carousel-container">
+        <button class="carousel-btn prev">&lt;</button>
+
+        <div class="carousel-track">
+
+          <div class="card-book">
+            <img src="./img/LivroQuimica.png" alt="A garota do lago">
+            <span class="book-title">Química - A Ciência Central</span>
+          </div>
+
+          <div class="card-book">
+            <img src="./img/LivroTerraAmaldiçoada.png" alt="A culpa é das estrelas">
+            <span class="book-title">A Terra Amaldiçoada</span>
+          </div>
+
+          <div class="card-book">
+            <img src="./img/LivroVeraoQueMudouMinhaVida.png" alt=" Anne de Green Gables">
+            <span class="book-title">O Verão Que Mudou Minha Vida</span>
+          </div>
+
+          <div class="card-book">
+            <img src="./img/LivroHarryPotter.png" alt="Amor gelado">
+            <span class="book-title">Harry Potter</span>
+          </div>
+
+        </div>
+
+        <button class="carousel-btn next">&gt;</button>
+      </div>
+    </section>
+
+
+        
+    </main>
+    
+
+    <script src="./js/home.js"> </script>
+</body>
+</html>

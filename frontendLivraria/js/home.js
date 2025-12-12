@@ -40,3 +40,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+document.querySelectorAll(".btn-favoritar").forEach(botao => {
+  botao.addEventListener("click", () => {
+
+    const card = botao.closest(".livro");
+
+    const livro = {
+      id: card.dataset.id,
+      titulo: card.dataset.titulo,
+      capa: card.dataset.capa,
+      genero: card.dataset.genero
+    };
+
+    let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+    if (!favoritos.some(l => l.id == livro.id)) {
+      favoritos.push(livro);
+    }
+
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
+    window.location.href = "favoritos.html";
+  });
+});
+
+

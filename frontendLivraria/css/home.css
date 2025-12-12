@@ -271,4 +271,20 @@ body {
     background: #265290;
 }
 
+.btn-favoritar {
+    margin-top: auto;  /* 🔥 Faz o botão ficar SEMPRE no mesmo lugar */
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background: #3c74ed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 
+.btn-favoritar i {
+    font-size: 32px;
+    color: white;
+}

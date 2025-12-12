@@ -1,0 +1,41 @@
+.servicos{
+    display: flex;
+    margin-top: 140px;
+    justify-content: space-around;
+     
+}
+.servicos__image{
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.titulo__atendimento{
+    font-family: var(--texto);  
+    font-weight: bold;
+    font-size: 45px;
+}
+
+.hgroup__mensagem {
+    width: 500px;
+}
+
+.texto__velocidade span {
+    color: var(--cor-velocidade);
+    font-weight: bold;
+}
+
+.texto__simplicidade span {
+    color: var(--cor-simplicidade);
+    font-weight: bold;
+}
+
+.texto__qualidade span {
+    color: var(--cor-qualidade);
+    font-weight: bold;
+}
+
+h6{
+    margin-top: 24px;
+    text-align: justify;
+}

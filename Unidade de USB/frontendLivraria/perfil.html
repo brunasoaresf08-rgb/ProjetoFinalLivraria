@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Perfil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- fonte de ícones, se quiser -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+  <link rel="stylesheet" href="css/perfil.css">
+</head>
+<body>
+
+  <main class="fundo-azul">
+    <section class="card-perfil">
+    
+    <div class="box-voltar">
+    <button class="btn-voltar" id="btnVoltar">Voltar</button>
+  </div>
+
+      <h1 class="titulo">Informações do perfil</h1>
+     
+      <div class="conteudo-perfil">
+        
+        <div class="avatar">
+          <!-- pode trocar por <img> depois -->
+          <div class="avatar-circulo">
+            <span class="material-symbols-outlined">person</span>
+          </div>
+        </div>
+
+        <form class="form-perfil">
+          <input type="text" placeholder="Nome completo">
+          <input type="email" placeholder="E-mail">
+          <input type="password" placeholder="Senha">
+
+          <div class="linha-dupla">
+            <input type="date" placeholder="dd/mm/aaaa">
+            <input type="tel" placeholder="+55 11 9 0000-0000">
+            <input type="text" placeholder="Curso">
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  
+  <script>
+  document.getElementById("btnVoltar").addEventListener("click", () => {
+    // troque "index.html" pela página para onde você quer voltar
+    window.location.href = "home2.html";
+  });
+</script>
+
+</body>
+</html>

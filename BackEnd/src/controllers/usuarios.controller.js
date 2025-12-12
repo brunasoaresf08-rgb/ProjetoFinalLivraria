@@ -1,18 +1,20 @@
 import { db } from "../config/db.js";
 
 export async function criarUsuario(req, res) {
+  console.log(req.body)
   try {
-    const { nome, email, senha } = req.body;
+    const { nome, email, senha,curso } = req.body;
     if (!nome || !email || !senha)
       return res.status(400).json({ erro: "Campos obrigatórios" });
 
     await db.execute(
-      "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)",
-      [nome, email, senha]
+      "INSERT INTO usuarios (nome, email, senha,curso) VALUES (?, ?, ?,?)",
+      [nome, email, senha,curso]
     );
 
     res.json({ mensagem: "Usuário criado com sucesso!" });
   } catch (err) {
+    console.log(err)
     res.status(500).json({ erro: err.message });
   }
 };

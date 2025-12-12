@@ -1,0 +1,274 @@
+/* CONFIGURAÇÕES GERAIS */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #eef2f5;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* MENU SUPERIOR */
+.topo {
+    background: #1d3557;
+    padding: 15px 5px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 110px;
+}
+
+.menu a {
+    color: white;
+    margin-left: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    position: relative;
+    top: -100px;
+}
+
+.menu {
+    flex-direction: column;
+    position:relative;
+    left: 500px;
+
+    
+
+}
+
+.menu a:hover {
+    opacity: 0.7;
+}
+
+/* BANNER */
+.banner {
+    height: 320px;
+    background: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+                url('https://images.unsplash.com/photo-1519681393784-d120267933ba')
+                center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+}
+
+.banner-texto {
+    text-align: center;
+    max-width: 650px;
+}
+
+.banner h1 {
+    left: 20px;
+    font-size: 40px;
+    margin-top: -70px;
+    padding-left: 40px;
+}
+
+.banner h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    margin-top: 200px;
+}
+.banner p {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+    margin-top: 190px;
+}
+
+.botao-banner {
+    padding: 12px 20px;
+    background: #e63946;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.botao-banner:hover {
+    background: #d62828;
+}
+
+/* TÍTULO */
+.titulo-sec {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 26px;
+    color: #1d3557;
+}
+
+/* GRID DE LIVROS */
+.lista-livros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    padding: 30px;
+}
+
+.card {
+    background: white;
+    padding: 12px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    transition: 0.25s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card h3 {
+    font-size: 16px;
+    margin: 12px 0;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+/* BOTÃO PDF */
+.botao-pdf {
+    display: inline-block;
+    padding: 10px 14px;
+    background: #457b9d;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.botao-pdf:hover {
+    background: #1d3557;
+}
+
+/* RODAPÉ */
+.rodape {
+    margin-top: 40px;
+    padding: 15px;
+    text-align: center;
+    background: #1f35b5;
+    color: white;
+    font-size: 14px;
+}
+
+.container-form form {
+    display: flex;
+    /* align-items: center; */
+    background: #fff;
+    border-radius: 22px;
+    padding: 6px 16px;
+    box-shadow: 0 1px 3px #0001;
+    margin-top: 20px;
+
+}
+.container-form input[type="text"] {
+    border: none;
+    outline: none;
+    font-size: 17px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    min-width: 250px;
+}
+.container-form button {
+    background: #3676c9;
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    padding: 7px 18px;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+
+}
+.container-form button:hover {
+    background: #265290;
+}
+
+
+.titulo-pedidos{
+    color: #3676c9;           /* Define a cor do texto */
+  font-size: 2.0em;         /* Define o tamanho do texto (em relação ao padrão) */
+  font-weight: bold;        /* Deixa o texto em negrito */
+  margin-top: 10px;         /* Espaço acima do título */
+  margin-bottom: 10px;      /* Espaço abaixo do título */
+  letter-spacing: 1px;      /* Espaçamento entre as letras */
+  text-shadow: 2px 2px 8px #0001; /* Coloca uma sombra suave atrás do texto */
+  font-family: 'Segoe UI', Arial, sans-serif; 
+  text-align: center;
+
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ecf2fa;
+    border-radius: 14px;
+    padding: 45px 0;
+}
+.carousel-track {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0 20px;  /* Espaço pros botões */
+    scrollbar-width: none;  /* Esconde scrollbar no Firefox */
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;  /* Esconde scrollbar no Chrome */
+}
+
+.card-book {
+    flex: 0 0 85px;  /* Largura fixa + flexível */
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;  /* Padding menor */
+    gap: 8px;
+}
+.card-book:last-child {
+    width: 85px;
+}
+
+.card-book img {
+    height: 110px;
+    width: 82px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.book-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+.carousel-btn {
+    background: #3676c9;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 22px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    margin: 0 9px;
+}
+.carousel-btn:hover {
+    background: #265290;
+}
+
+

@@ -1,72 +1,54 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Perfil</title>
-    <link rel="stylesheet" href="css/perfil.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Meu Perfil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- fonte de ícones, se quiser -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+  <link rel="stylesheet" href="css/perfil.css">
 </head>
 <body>
-    <header>
-        <section class="container-logo">
-            <div class="container-logo-img">
-                <img class="logo" src="./IMG/logo branca 23.png" alt="logo-bibliotec">
-            </div>
-        </section>
 
-        <section class="container-form">
-            <form method="GET" action="/buscar">
-            <input type="text" name="q" placeholder="Faça sua pesquisa">
-            <button type="submit">Buscar</button>
-            </form>
-        </section>
+  <main class="fundo-azul">
+    <section class="card-perfil">
+    
+    <div class="box-voltar">
+    <button class="btn-voltar" id="btnVoltar">Voltar</button>
+  </div>
 
-        <section class="icon">
-            <nav class="icon-cabecalho">
-                <a href="./"><span class="material-symbols-outlined">notifications</span></a>
-                <a href="./perfil.html"><span class="material-symbols-outlined">account_circle</span></a>
-            </nav>
-            
-        </section>
-    </header>
-
-     <main>
-        <div class="profile-card">
-        <h2 class="title">Informações do perfil</h2>
-        <div class="profile-content-body">
-            <div class="profile-icon-wrapper">
-                <div class="profile-icon">
-                   
-                </div>
-            </div>
-          
-
-            
-            <div class="form-fields">
-                <input type="text" id="nome" placeholder="Nome completo" class="full-width">
-                
-                <input type="email" id="email" placeholder="E-mail" class="full-width">
-                
-                <input type="password" id="senha" placeholder="Senha" class="full-width">
-
-                
-                
-                <div class="input-group">
-                    <input type="date" id="data_nascimento" placeholder="00/00/0000" class="input-half">
-                    <input type="text" id="celular" placeholder="+55 11 9 0000-0000" class="input-half">
-                </div>
-                
-                <div class="input-group">
-                    <input type="text" id="curso" placeholder="Curso" class="input-half">
-                </div>
-            </div>
+      <h1 class="titulo">Informações do perfil</h1>
+     
+      <div class="conteudo-perfil">
+        
+        <div class="avatar">
+          <!-- pode trocar por <img> depois -->
+          <div class="avatar-circulo">
+            <span class="material-symbols-outlined">person</span>
+          </div>
         </div>
-    </div>
-   
 
- </main>
+        <form class="form-perfil">
+          <input type="text" placeholder="Nome completo">
+          <input type="email" placeholder="E-mail">
+          <input type="password" placeholder="Senha">
 
+          <div class="linha-dupla">
+            <input type="date" placeholder="dd/mm/aaaa">
+            <input type="tel" placeholder="+55 11 9 0000-0000">
+            <input type="text" placeholder="Curso">
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  
+  <script>
+  document.getElementById("btnVoltar").addEventListener("click", () => {
+    // troque "index.html" pela página para onde você quer voltar
+    window.location.href = "home2.html";
+  });
+</script>
 
 </body>
 </html>

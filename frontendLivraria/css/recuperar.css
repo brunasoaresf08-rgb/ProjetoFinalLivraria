@@ -1,0 +1,74 @@
+
+ body {
+      font-family: Arial, sans-serif;
+      background: #4b7fb3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      
+
+    }
+    h2 {
+      text-align: center;
+      color: #0056d6;
+      margin-bottom: 20px;
+
+
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #2356a1;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #0056d6;
+      text-decoration: none;
+    }
+
+    .titulo{
+      margin-bottom: 20px;
+      font-weight: 900px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
+    }
+
+.card-cadastro {
+  position: relative; /* importante pro absolute funcionar dentro do card */
+}
+
+.btn-logout {
+  position: absolute;
+  bottom: 150px;    
+  left: 16px;     
+  background: transparent;
+  border: none;
+  color: #0d6efd; /* mesma cor do botão/links */
+  font-size: 22px;
+  cursor: pointer;
+}

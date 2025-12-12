@@ -1,0 +1,30 @@
+.titulo__logo {
+    font-family: var(--texto-logo);
+    font-size: 25px;
+}
+
+.titulo__principal {
+    font-family: var(--texto);
+    font-weight: 900;
+    font-size: 48px;
+}
+
+.card {
+    width: 300px;
+    height: 200px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--cor-branco);
+    box-shadow: 
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.01),
+    2.7px 2.7px 5.3px rgba(0, 0, 0, 0.14),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.20),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.21),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.02),
+    100px 100px 80px rgba(0, 0, 0, 0.01);
+}

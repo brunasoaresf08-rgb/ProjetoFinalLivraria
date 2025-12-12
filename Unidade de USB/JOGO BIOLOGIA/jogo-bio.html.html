@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="description" content="Quiz interativo sobre transporte de membranas celulares. Teste seus conhecimentos e aprenda sobre os diferentes tipos de transporte celular." />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Quiz Interativo: Transporte de Membranas</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<script src="https://kit.fontawesome.com/efef0670e1.js" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" /> 
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transporte de Membranas</title>
+
+<style>
+
+
+  /* Reset & base */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Corpo do site (exceto tela inicial) */
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: radial-gradient(circle at top left, #0d2a52, #0f172a);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 64px 1fr 64px;
+    overflow-y: auto; 
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  button {
+    cursor: pointer;
+  }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    height: 64px;
+    backdrop-filter: blur(16px);
+    background: linear-gradient(90deg, #0f172a, #0284c7);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 1000;
+  }
+  header .logo {
+    font-weight: 700;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    background-color: #95accc;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select:none;
+  }
+
+  /* Layout container */
+  .layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: calc(100vh - 128px);
+  }
+  @media (max-width: 1023px){
+    .layout {
+      grid-template-columns: 0 1fr;
+    }
+  }
+
+  /* Sidebar */
+  nav.sidebar {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    backdrop-filter: blur(16px);
+    border-right: 7px solid #0f172a88; 
+    height: 100vh;
+    padding: 30px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+  }
+  @media (max-width: 1023px) {
+    nav.sidebar {
+      position:sticky;
+      top: 64px;
+      left: 0;
+      height: calc(100vh - 64px);
+      max-width: 280px;
+      width: 280px;
+      box-shadow: 4px 0 16px rgba(0,0,0,0.15);
+      transform: translateX(-100%);
+      z-index: 1500;
+    }
+    nav.sidebar.open {
+      transform: translateX(0);
+    }
+  }
+  nav.sidebar h2 {
+    font-size: 1.3rem;
+    color: rgb(8, 156, 255);
+    font-weight: 600;
+  }
+  nav.sidebar ul.question-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  nav.sidebar ul.question-list li {
+    cursor: pointer;
+  }
+  nav.sidebar ul.question-list li.selected {
+    font-weight: 700;
+    color: #148bc2;
+  }
+  nav.sidebar ul.question-list li:hover:not(.selected) {
+    color: #37c6ff;
+
+  }
+
+  /* Sidebar toggle button on mobile */
+  #sidebarToggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #ef4444;
+  }
+  @media (max-width: 1023px){
+    #sidebarToggle {
+      display: block;
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 2000;
+    }
+  }
+
+  /* Main content */
+  main.content {
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+  main.content > * + * {
+    margin-top: 32px;
+  }
+
+  .question-card {
+    background: rgba(255 255 255 / 0.85);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 32px 40px;
+    max-width: 720px;
+    margin: 0 auto;
+    user-select:none;
+  }
+  .question-card h3 {
+    font-size: clamp(1.5rem, 3vw, 1.9rem);
+    font-weight: 700;
+    color: #334155;
+  }
+  .answers {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .answer-btn {
+    background: #e0e7ff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    padding: 14px 24px;
+    text-align: left;
+    color: #334155;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease,
+      transform 0.15s ease;
+  }
+  .answer-btn:hover,
+  .answer-btn:focus-visible {
+    background: #c7d2fe;
+    outline: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transform: scale(1.02);
+  }
+  .answer-btn:disabled {
+    cursor: default;
+    opacity: 0.6;
+    box-shadow: none;
+    transform: none;
+  }
+  .answer-btn.correct {
+    background: #34d399;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .answer-btn.incorrect {
+    background: #f87171;
+    color: #7f1d1d;
+    font-weight: 700;
+  }
+
+  /* Scoreboard */
+  .scoreboard {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color:rgba(255 255 255 / 0.85);
+    user-select:none;
+  }
+
+  /* Notification toast */
+  #toast {
+    position: flex;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(51 65 85 / 0.95);
+    color: #fbbf24;
+    font-weight: 600;
+    padding: 16px 24px;
+    border-radius: 16px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    display: none;
+    align-items: center;
+    gap: 12px;
+    z-index: 2600;
+    width: fit-content;
+    max-width: 90vw;
+  }
+  #toast .material-icons {
+    font-size: 28px;
+    color: #c7a758;
+  }
+  #toast.show {
+    display: flex;
+    animation: slideUpFadeIn 0.35s ease forwards;
+  }
+  @keyframes slideUpFadeIn {
+    from {opacity:0; transform: translateX(-50%) translateY(20px);}
+    to {opacity:1; transform: translateX(-50%) translateY(0);}
+  }
+
+  /* Scrollbar for sidebar */
+  nav.sidebar::-webkit-scrollbar {
+    width: 8px;
+  }
+  nav.sidebar::-webkit-scrollbar-thumb {
+    background: #e9e7ee;
+    border-radius: 8px;
+  }
+  nav.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+button {
+    background-color: #ff6f61; /* Cor do botão */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #ff4b39; /* Efeito ao passar o mouse */
+}
+
+
+
+/* Tela inicial */
+.start-screen {
+  position: fixed;
+  inset: 0;
+  height: 100%;
+  position: relative;
+  background: radial-gradient(circle at top left, #0d2a52, #43098f);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  padding: 40px 20px;
+  z-index: 3000;
+  overflow-y: auto; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+}
+
+
+
+.start-screen h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.start-screen h1 {
+    color: rgb(255, 255, 255) !important;
+    font-size: 2rem !important;
+    opacity: 1 !important;
+    display: block !important;
+    position: static !important;
+  }
+
+.start-screen p {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+  font-size: 1.2rem;
+  max-width: 480px;
+}
+
+
+.start-screen img {
+  width: 300px;
+  max-width: 90%;
+  height: auto;
+}
+
+.start-screen button {
+  background: linear-gradient(90deg, #389bd4, #b334daf6);
+  color: white;
+  font-size: 1.1rem;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-weight: 600;
+}
+.start-screen button:hover {
+  background-color: #dc2626;
+  
+}
+
+
+/* Fonte e estilo geral da sidebar */
+.sidebar {
+  font-family: 'Roboto', Arial, sans-serif;
+  color: #222222;
+  background-color: #f9f9f9;  /* fundo claro */
+  padding: 20px;
+  border-radius: 8px;
+  width: 280px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Título da sidebar */
+.sidebar h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #4a90e2;
+  padding-bottom: 6px;
+  color: #333;
+}
+
+/* Lista de perguntas */
+.question-list {
+  list-style: none;  /* remove marcadores padrão */
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Itens da lista */
+.question-list li {
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 1px solid transparent;
+}
+
+/* Efeito hover */
+.question-list li:hover {
+  background-color: #4a90e2;
+  color: #fff;
+  border-color: #3a78c2;
+}
+
+/* Item ativo (exemplo de seleção) */
+.question-list li.active {
+  background-color: #2a5db0;
+  color: #fff;
+  font-weight: 700;
+  border-color: #244d8a;
+}
+
+/* Foco para acessibilidade */
+.question-list li:focus {
+  outline: 3px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Se quiser colocar números estilizados antes das perguntas */
+.question-list li::before {
+  content: counter(question-counter);
+  counter-increment: question-counter;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  margin-right: 10px;
+  background-color: #4a90e2;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+/* Reset do contador para a lista */
+.question-list {
+  counter-reset: question-counter;
+}
+  #hintToggleBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(245, 158, 11, 0.7);
+    transition: background-color 0.3s ease;
+    z-index: 3100;
+    user-select: none;
+    gap: 12px;
+  }
+body {
+  overflow: hidden;
+}
+ 
+  #hintToggleBtn:hover {
+    background-color: #d97706;
+  }
+  #hintContainer {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: fixed;
+    bottom: 70px; 
+    right: 20px;
+    max-width: 280px;
+    background-color: #fef9c3;
+    border-left: 4px solid #facc15;
+    padding: 16px 20px;
+    font-style: italic;
+    color: #4b5563;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    font-size: 1rem;
+    z-index: 3000;
+    user-select: none;
+  }
+
+</style>
+</head>
+
+<body>
+
+<div id="startScreen" class="start-screen">
+  <!--<h1><i class="fa-solid fa-puzzle-piece"></i> QUIZ</h1>-->
+  <h1>TRANSPORTE DE<br>MEMBRANAS</h1>
+  <p>Um jogo interativo para aprender sobre o transporte celular!</p>
+  <img src="0058c3c3a7d77d2c1421591c3e13e82d-removebg-preview.png" alt="Ilustração de membrana celular" />
+  <button id="startBtn">INICIAR JOGO</button>
+</div>
+
+
+
+
+<header>
+  <button id="sidebarToggle" aria-label="Abrir menu de navegação" title="Abrir menu">
+    <span class="material-icons">menu</span>
+  </button>
+  <div class="logo" aria-label="Logo Quiz Transporte de Membranas"><i class="fa-solid fa-dna"></i> Quiz - Transporte de Membranas</div>
+</header>
+
+<!-- Botão fixo para mostrar/esconder dica -->
+
+<button id="hintToggleBtn" style="display:none; cursor:pointer;"
+ i class="fa-regular fa-lightbulb" style="gap: 8px;"></i>
+  <span id="hintToggleText">  Mostrar  dica ( 5 restantes )</span>
+</button>
+<div id="hintContainer" style="display:none; margin-top:10px; background:#eef6fc; padding:10px; border-radius:6px; color:#333;"></div>
+
+<script>
+  // Exemplo: Mostrar botão quando clicar em iniciar jogo
+document.getElementById('startBtn').addEventListener('click', function() {
+    const hintBtn = document.getElementById('hintToggleBtn');
+    hintBtn.style.display = 'inline-flex';  // Mostra o botão
+  });
+
+  // Previne redirecionamento acidental ao clicar no botão dica
+  document.getElementById('hintToggleBtn').addEventListener('click', function(event) {
+    event.preventDefault();
+    // Ação do botão dica aqui
+    alert('Dica mostrada!');
+  });
+</script>
+
+<div class="layout">
+<nav class="sidebar" aria-label="Navegação das perguntas">
+  <h2>Questões</h2>
+  <ul class="question-list" id="questionList" role="list" tabindex="0">
+    <!-- Lista de perguntas dinamicamente inserida -->
+  </ul>
+</nav>
+
+<main class="content" role="main" aria-live="polite" aria-atomic="true" aria-relevant="additions">
+  <section class="question-card" aria-labelledby="questionTitle" aria-describedby="questionDesc" role="region" tabindex="0">
+    <h3 id="questionTitle">Carregando pergunta...</h3>
+    <div id="questionDesc" style="margin-top:12px; font-size:1rem; color:#1b69d8;">Selecione uma resposta abaixo:</div>
+    <div class="answers" role="list" id="answersList" aria-label="Alternativas de resposta">
+
+      <!-- Alternativas dinâmicas -->
+    </div>
+  </section>
+
+  <div class="scoreboard" aria-live="polite" aria-atomic="true" id="scoreBoard" role="status" aria-relevant="text">
+    Pontuação: 0
+  </div>
+</main>
+</div>
+
+<div id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <span class="material-icons" aria-hidden="true" id="toastIcon">check_circle</span>
+  <span id="toastMessage"></span>
+</div>
+
+
+
+<script>
+(() => {
+  'use strict';
+
+  // Tela inicial
+document.getElementById('startBtn').addEventListener('click', () => {
+  document.getElementById('startScreen').style.display = 'none';
+});
+
+
+  const questions = [
+  {
+    id: 1,
+    question: "Qual é a principal característica do transporte passivo através da membrana plasmática?",
+    hint: "Esse tipo de transporte não gasta ATP e segue o fluxo natural das substâncias.",
+    answers: [
+      {id: 'a', text: "Requer gasto de energia na forma de ATP", correct: false},
+      {id: 'b', text: "Ocorre sempre contra o gradiente de concentração", correct: false},
+      {id: 'c', text: "Ocorre a favor do gradiente de concentração, sem gasto de energia", correct: true}
+    ]
+  },
+  {
+    id: 2,
+    question: "Qual tipo de transporte é responsável pela entrada de grandes partículas na célula, como bactérias ou fragmentos celulares?",
+    hint: "É como se a célula 'engolisse' algo sólido do meio externo.",
+    answers: [
+      {id: 'a', text: "Osmose", correct: false},
+      {id: 'b', text: "Endocitose", correct: true},
+      {id: 'c', text: "Difusão facilitada", correct: false}
+    ]
+  },
+  {
+    id: 3,
+    question: "Na difusão facilitada, qual estrutura da membrana ajuda no transporte de substâncias?",
+    hint: "Algumas moléculas precisam de 'ajudantes' para atravessar a membrana, mesmo sem gastar energia.",
+    answers: [
+      {id: 'a', text: "Fosfolipídios", correct: false},
+      {id: 'b', text: "Proteínas transportadoras", correct: true},
+      {id: 'c', text: "Microtúbulos", correct: false}
+    ]
+  },
+  {
+    id: 4,
+    question: "Eu sou a forma mais rápida de entrar na célula, desde que você seja pequeno e sem carga. Quem sou eu?",
+    hint: "Não preciso de ajuda ou energia.",
+    answers: [
+      {id: 'a', text: "Transporte Ativo", correct: false},
+      {id: 'b', text: "Osmose", correct: false},
+      {id: 'c', text: "Difusão Simples", correct: true}
+    ]
+  },
+  {
+    id: 5,
+    question: "Se você é glicose e quer entrar na célula, terá que usar uma 'carona'. Qual transporte você usa?",
+    hint: "É como entrar na balada com ajuda de um amigo da fila VIP.",
+    answers: [
+      {id: 'a', text: "Difusão Simples", correct: false},
+      {id: 'b', text: "Difusão Facilitada", correct: true},
+      {id: 'c', text: "Osmose", correct: false}
+    ]
+  },
+  {
+    id: 6,
+    question: "Para atravessar a membrana, eu gasto energia. Qual tipo de transporte sou eu?",
+    hint: "ATP é meu combustível.",
+    answers: [
+      {id: 'a', text: "Osmose", correct: false},
+      {id: 'b', text: "Transporte Ativo", correct: true},
+      {id: 'c', text: "Difusão Facilitada", correct: false}
+    ]
+  },
+  {
+    id: 7,
+    question: "Se houver muita água fora da célula e pouca dentro, o que vai acontecer?",
+    hint: "Água adora equilíbrio.",
+    answers: [
+      {id: 'a', text: "A água sai da célula.", correct: false},
+      {id: 'b', text: "A água entra na célula.", correct: true},
+      {id: 'c', text: "Nada acontece.", correct: false}
+    ]
+  },
+  {
+    id: 8,
+    question: "Sou como um ônibus que transporta íons para fora da célula contra o fluxo. Quem sou eu?",
+    hint: "Penso no equilíbrio e trabalho muito no transporte ativo.",
+    answers: [
+      {id: 'a', text: "Bomba de Sódio e Potássio", correct: true},
+      {id: 'b', text: "Difusão Facilitada", correct: false},
+      {id: 'c', text: "Osmose", correct: false}
+    ]
+  },
+  {
+    id: 9,
+    question: "Se uma célula for colocada em uma solução muito salgada, o que acontece com ela?",
+    hint: "Pense no que acontece com sua pele na água salgada.",
+    answers: [
+      {id: 'a', text: "A célula encolhe.", correct: true},
+      {id: 'b', text: "A célula incha.", correct: false},
+      {id: 'c', text: "A célula explode.", correct: false}
+    ]
+  },
+  {
+    id: 10,
+    question: "Eu sou um tipo de transporte que depende das proteínas de canal. Quem sou eu?",
+    hint: "Sou facilitado, mas não gasto energia.",
+    answers: [
+      {id: 'a', text: "Transporte Ativo", correct: false},
+      {id: 'b', text: "Difusão Facilitada", correct: true},
+      {id: 'c', text: "Difusão Simples", correct: false}
+    ]
+  },
+  {
+    id: 11,
+    question: "Quando a água se move para equilibrar a concentração de solutos, qual processo está acontecendo?",
+    hint: "A água sempre vai para onde há mais soluto.",
+    answers: [
+      {id: 'a', text: "Difusão Facilitada", correct: false},
+      {id: 'b', text: "Transporte Ativo", correct: false},
+      {id: 'c', text: "Osmose", correct: true}
+    ]
+  },
+  {
+    id: 12,
+    question: "Qual transporte celular ocorre contra o gradiente de concentração, exigindo energia para acontecer?",
+    hint: "É como nadar contra a correnteza – você precisa gastar energia!",
+    answers: [
+      {id: 'a', text: "Difusão Facilitada", correct: false},
+      {id: 'b', text: "Osmose", correct: false},
+      {id: 'c', text: "Transporte Ativo", correct: true}
+    ]
+  }
+];
+
+
+  let currentQuestionIndex = 0;
+  let score = 0;
+
+  const questionTitleEl = document.getElementById('questionTitle');
+  const questionDescEl = document.getElementById('questionDesc');
+  const answersListEl = document.getElementById('answersList');
+  const scoreBoardEl = document.getElementById('scoreBoard');
+  const questionListEl = document.getElementById('questionList');
+  const toastEl = document.getElementById('toast');
+  const toastMessageEl = document.getElementById('toastMessage');
+  const toastIconEl = document.getElementById('toastIcon');
+  const sidebarEl = document.querySelector('nav.sidebar');
+  const sidebarToggleBtn = document.getElementById('sidebarToggle');
+
+
+  // Accessibility: Focus management helper
+  function setFocus(el) {
+    if (!el) return;
+    el.focus();
+  }
+
+
+  function createQuestionList() {
+    questions.forEach((q, idx) => {
+      const li = document.createElement('li');
+      li.setAttribute('role', 'listitem');
+      li.setAttribute('tabindex', '0');
+      li.dataset.index = idx;
+      li.textContent = `Pergunta ${idx + 1}`;
+      if(idx === currentQuestionIndex){
+        li.classList.add('selected');
+      }
+      li.addEventListener('click', () => {
+        if(currentQuestionIndex !== idx){
+          currentQuestionIndex = idx;
+          loadQuestion(currentQuestionIndex);
+          updateSelectedListItem();
+        }
+        closeSidebarIfMobile();
+      });
+      li.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          li.click();
+        }
+      });
+      questionListEl.appendChild(li);
+    });
+  }
+
+  function updateSelectedListItem() {
+    [...questionListEl.children].forEach((li, i) => {
+      li.classList.toggle('selected', i === currentQuestionIndex);
+    });
+  }
+
+  function loadQuestion(index) {
+    const q = questions[index];
+    questionTitleEl.textContent = q.question;
+    answersListEl.innerHTML = '';
+
+    q.answers.forEach(({id, text}) => {
+      const btn = document.createElement('button');
+      btn.className = 'answer-btn';
+      btn.type = 'button';
+      btn.setAttribute('role', 'listitem');
+      btn.textContent = text;
+      btn.dataset.answerId = id;
+      btn.disabled = false;
+
+      btn.addEventListener('click', () => handleAnswerSelection(btn, q));
+      btn.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+
+      answersListEl.appendChild(btn);
+    });
+
+    // Focus on first answer for accessibility
+    setFocus(answersListEl.firstElementChild);
+  }
+
+  function handleAnswerSelection(btn, question) {
+    const selectedAnswerId = btn.dataset.answerId;
+    const answer = question.answers.find(a => a.id === selectedAnswerId);
+    if (!answer) return;
+
+    // Disable all buttons after one selection
+    const allButtons = answersListEl.querySelectorAll('button');
+    allButtons.forEach(b => b.disabled = true);
+
+    // Mark correct and incorrect
+    allButtons.forEach(b => {
+      const aid = b.dataset.answerId;
+      const ans = question.answers.find(a => a.id === aid);
+      if(ans.correct) {
+        b.classList.add('correct');
+      }
+      if(b === btn && !ans.correct){
+        b.classList.add('incorrect');
+      }
+    });
+
+    // Score calculation and toast
+    let message = '';
+    if(answer.correct) {
+      score += 2;
+      message = '+2 pontos! Resposta correta!.';
+      showToast(message, 'check_circle', true);
+    } else {
+      score -= 1;
+      if(score < 0) score = 0; // no negative score
+      message = '-1 ponto. Resposta incorreta!.';
+      showToast(message, 'error', false);
+    }
+    updateScore();
+
+    // Auto-advance after short delay when correct or incorrect
+    setTimeout(() => {
+      goToNextQuestion();
+    }, 2000);
+  }
+
+  function updateScore() {
+scoreBoardEl.innerHTML = `<i class="fa-solid fa-star"></i> Pontuação: ${score}`;
+  }
+
+  function goToNextQuestion() {
+    if(currentQuestionIndex + 1 < questions.length){
+      currentQuestionIndex++;
+      loadQuestion(currentQuestionIndex);
+      updateSelectedListItem();
+      closeSidebarIfMobile();
+    } else {
+      showQuizComplete();
+    }
+  }
+
+  function showQuizComplete() {
+    questionTitleEl.textContent = 'Parabéns! Você concluiu o quiz.';
+    questionDescEl.textContent = `Sua pontuação final é: ${score} ponto${score !== 1 ? 's' : ''}.`;
+    answersListEl.innerHTML = '';
+    scoreBoardEl.textContent = `Pontuação final: ${score}`;
+  }
+
+  // Toast notifications
+  let toastTimeout;
+  function showToast(message, icon, positive = true) {
+    toastMessageEl.textContent = message;
+    toastIconEl.textContent = icon;
+    toastIconEl.style.color = positive ? '#22c55e' : '#ef4444';
+    toastEl.classList.add('show');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+      toastEl.classList.remove('show');
+    }, 2500);
+  }
+
+  // Sidebar toggle for mobile
+  sidebarToggleBtn.addEventListener('click', () => {
+    sidebarEl.classList.toggle('open');
+  });
+  function closeSidebarIfMobile(){
+    if(window.innerWidth < 1024 && sidebarEl.classList.contains('open')){
+      sidebarEl.classList.remove('open');
+      sidebarToggleBtn.focus();
+    }
+  }
+  // Close sidebar on window resize if needed
+  window.addEventListener('resize', () => {
+    if(window.innerWidth >= 1024){
+      sidebarEl.classList.remove('open');
+    }
+  });
+
+  // Initialization
+  createQuestionList();
+  loadQuestion(currentQuestionIndex);
+  updateScore();
+
+
+
+  let hintsLeft = 5;
+
+  document.getElementById('startBtn').addEventListener('click', () => {
+  document.getElementById('startScreen').style.display = 'none';
+  // Mostrar o botão e container da dica
+  document.getElementById('hintToggleBtn').style.display = 'block';
+  // O container da dica continua oculto até o usuário clicar para mostrar
+});
+
+  const hintToggleBtn = document.getElementById('hintToggleBtn');
+  const hintContainer = document.getElementById('hintContainer');
+  // Suponha que currentQuestionIndex e questions estejam definidos no seu script
+  hintToggleBtn.addEventListener('click', () => {
+    if (hintContainer.style.display === 'block') {
+      hintContainer.style.display = 'none'; // Esconde dica
+    } else {
+      if (hintsLeft <= 0) return; // Sem dicas restantes
+      const currentHint = questions[currentQuestionIndex].hint || 'Sem dica disponível.';
+      hintContainer.textContent = `💡 ${currentHint}`;
+      hintContainer.style.display = 'block'; // Mostra dica
+      hintsLeft--;
+      updateHintToggleText();
+    }
+  });
+
+   function updateHintToggleText() {
+    if (hintsLeft > 0) {
+      hintToggleBtn.textContent = `Mostrar dica (${hintsLeft} restantes)`;
+      hintToggleBtn.disabled = false;
+    } else {
+      hintToggleBtn.textContent = 'Sem dicas restantes';
+      hintToggleBtn.disabled = true;
+    }
+  }
+  // Inicializar texto do botão assim que o quiz iniciar
+  updateHintToggleText();
+
+  
+
+  
+})();
+
+
+</script>
+</body>
+</html>
+

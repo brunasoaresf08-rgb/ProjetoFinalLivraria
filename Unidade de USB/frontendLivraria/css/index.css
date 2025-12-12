@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+/* fundo principal */
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #6EA8FF, #1B4BFF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1, h2, h3, .titulo, .subtitle {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* oval cinza */
+.right-bg {
+    position: absolute;
+    right: -200px;
+    top: 0;
+    width: 70%;
+    height: 100%;
+    background: #e6e6e6;
+    border-top-left-radius: 300px;
+    border-bottom-left-radius: 300px;
+    z-index: 1;
+}
+
+
+/* texto 'Biblioteca Digital' */
+.left-side {
+    width: 45%;
+    display: flex;
+    z-index: 2;
+}
+
+.left-side h1 {
+    position: absolute;
+    top: 50%;       
+    left: 20%;       
+    transform: translateY(-40%);
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+    z-index: 3;    
+    line-height: 40px;
+}
+
+/* Bloco Login */
+.login-box {
+    position: absolute;
+    right: 200px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 380px;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    z-index: 3;
+    animation: fadeIn .3s ease-out;
+}
+
+/* animação */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-60%); }
+    to { opacity: 1; transform: translateY(-50%); }
+}
+
+
+.logo {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 130px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+
+.container-login,
+.container-senha {
+    display: flex;
+    align-items: center;
+    background: #f4f4f4;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-top: 12px;
+    border: 1px solid #dcdcdc;
+}
+
+.container-login input,
+.container-senha input {
+    border: none;
+    background: transparent;
+    outline: none;
+    margin-left: 10px;
+    width: 100%;
+    font-size: 15px;
+}
+
+.icone-email, .icone-senha {
+    font-size: 18px;
+}
+
+.container-new-acess {
+    text-align: right;
+    margin-top: 8px;
+}
+
+.container-new-acess a {
+    color: #3758ff;
+    text-decoration: none;
+    font-size: 14px;
+    
+}
+
+.container-new-acess a:hover {
+    text-decoration: underline;
+    
+}
+
+.btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    font-size: 18px;
+    border-radius: 12px;
+    background: #3758ff;
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #1f35b5;
+}
+
+.container-registrar {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.container-registrar a {
+    color: #3758ff;
+    text-decoration: none;
+}
+
+
